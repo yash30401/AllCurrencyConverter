@@ -1,5 +1,7 @@
 package com.usd.eur.currency.allcurrencyconverter
 
+import android.content.Intent
+import android.net.Uri
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.text.Editable
@@ -29,6 +31,11 @@ class MainActivity : AppCompatActivity() {
 
 
 
+        binding.privacy.setOnClickListener {
+            startActivity(Intent(Intent.ACTION_VIEW,
+                Uri.parse("")
+            ))
+        }
 
 
 
@@ -82,6 +89,7 @@ class MainActivity : AppCompatActivity() {
 
         }else{
             Toast.makeText(applicationContext, "Please Select Two Different Currencies", Toast.LENGTH_SHORT).show()
+            binding.progressBar.visibility=View.GONE
         }
 // Request a string response from the provided URL.
 
