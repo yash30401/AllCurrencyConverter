@@ -41,22 +41,31 @@ class MainActivity : AppCompatActivity() {
 
         binding.getResult.setOnClickListener {
 
-            binding.progressBar.visibility=View.VISIBLE
-            val fromSpin=binding.spinner.selectedItem.toString()
 
-            Log.d("selectedItem1",fromSpin.toString())
 
-            val toSpin=binding.spinner2.selectedItem.toString()
+            if(binding.fromText.text.isNullOrEmpty()){
+                Toast.makeText(this, "Empty Field!", Toast.LENGTH_SHORT).show()
+            }else {
 
-            Log.d("selectedItem2",toSpin.toString())
 
-            val fromCur=binding.fromText.text.toString().toDouble()
+                    binding.progressBar.visibility=View.VISIBLE
+                    val fromSpin=binding.spinner.selectedItem.toString()
 
-            Log.d("selectedItem3",fromCur.toString())
-            val toCur=binding.fromText.text.toString().toDouble()
+                    Log.d("selectedItem1",fromSpin.toString())
 
-            getResult(fromSpin,toSpin,fromCur)
+                    val toSpin=binding.spinner2.selectedItem.toString()
 
+                    Log.d("selectedItem2",toSpin.toString())
+
+                    val fromCur=binding.fromText.text.toString().toDouble()
+
+                    Log.d("selectedItem3",fromCur.toString())
+                    val toCur=binding.fromText.text.toString().toDouble()
+
+                    getResult(fromSpin, toSpin, fromCur)
+
+
+            }
         }
     }
 
@@ -67,6 +76,8 @@ class MainActivity : AppCompatActivity() {
         val queue = Volley.newRequestQueue(this)
 
         if(fromSpin!=toSpin) {
+
+
             val url =
                 "https://api.frankfurter.app/latest?amount=${amount}&from=${fromSpin}&to=${toSpin}"
 
@@ -94,4 +105,7 @@ class MainActivity : AppCompatActivity() {
 // Request a string response from the provided URL.
 
     }
+
+
+
 }
